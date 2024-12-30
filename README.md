@@ -348,6 +348,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
    Install the chart on your Kubernetes cluster:
    
              helm install go-web-app ./go-web-app
+
    
 ├── helm/
 │   └── go-web-app-chart/
