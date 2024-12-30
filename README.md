@@ -129,22 +129,22 @@ Kubernetes defines the desired state of an application through YAML files. These
   Ingress resources allow external HTTP/S traffic to reach the services in the cluster.
   Example:
   
-  apiVersion: networking.k8s.io/v1
-  kind: Ingress
-  metadata:
-    name: go-web-app-ingress
-  spec:
-    rules:
-    - host: go-web-app.local
-      http:
-        paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: go-web-app
-              port:
-                number: 80
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: go-web-app-ingress
+          spec:
+            rules:
+            - host: go-web-app.local
+              http:
+                paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                      name: go-web-app
+                      port:
+                        number: 80
   
   - *Host*: Defines the domain name for external access.
   - *Paths*: Specifies the URL path that should route traffic to the service.
@@ -158,8 +158,8 @@ Minikube is a local Kubernetes cluster used for development and testing.
 #### *Installing Minikube*:
 - *Linux*:
   
-  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+         curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+         sudo install minikube-linux-amd64 /usr/local/bin/minikube
   
 
 - *Windows*:
@@ -168,32 +168,32 @@ Minikube is a local Kubernetes cluster used for development and testing.
 #### *Starting Minikube*:
 To start a Minikube cluster, run the following command:
 
-minikube start
+        minikube start
 
 This command initializes a local Kubernetes cluster inside a VM or a container.
 
 #### *Check Cluster Status*:
 After starting the cluster, you can check the status of the cluster and nodes:
 
-kubectl cluster-info
+          kubectl cluster-info
 
 
 #### *Setting Up Docker Environment to Minikube*:
 To build Docker images directly inside Minikube:
 
-eval $(minikube docker-env)
+        eval $(minikube docker-env)
 
 
 #### *Building and Deploying in Minikube*:
 Once your Docker environment is set to Minikube, build your Docker image:
 
-docker build -t go-web-app:latest .
+       docker build -t go-web-app:latest .
 
 Then, apply the Kubernetes manifests:
 
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-kubectl apply -f ingress.yaml
+       kubectl apply -f deployment.yaml
+       kubectl apply -f service.yaml
+       kubectl apply -f ingress.yaml
 
 
 ---
@@ -204,7 +204,7 @@ Minikube includes an Ingress controller add-on, which allows external HTTP/S tra
 
 #### *Enable Ingress in Minikube*:
 
-minikube addons enable ingress
+        minikube addons enable ingress
 
 
 This command enables the Ingress controller, which allows you to manage external access to services.
@@ -212,21 +212,21 @@ This command enables the Ingress controller, which allows you to manage external
 #### *Verify Ingress Controller*:
 Check that the Ingress controller is running in the kube-system namespace:
 
-kubectl get pods -n kube-system
+         kubectl get pods -n kube-system
 
 
 #### *Accessing the Application*:
 1. *Get Minikube IP*:
    To find the IP address of your Minikube instance:
    
-   minikube ip
+          minikube ip
    
 
 2. *Update /etc/hosts*:
    Add the Minikube IP and the domain defined in the Ingress file (go-web-app.local) to your /etc/hosts:
    
-   sudo nano /etc/hosts
-   192.168.99.100 go-web-app.local
+             sudo nano /etc/hosts
+             192.168.99.100 go-web-app.local
    
 
 3. *Access Application in Browser*:
@@ -241,7 +241,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 #### *Installing Helm*:
 - *Linux*:
   
-  curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+            curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
   
 
 - *Windows*:
@@ -250,7 +250,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 #### *Creating a Helm Chart*:
 1. *Create a New Chart*:
    
-   helm create go-web-app
+             helm create go-web-app
    
 
 2. *Modify the Chart*:
@@ -260,7 +260,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 3. *Install the Chart*:
    Install the chart on your Kubernetes cluster:
    
-   helm install go-web-app ./go-web-app
+             helm install go-web-app ./go-web-app
    
 
 ---
@@ -298,7 +298,7 @@ Argo CD is a GitOps continuous delivery tool for Kubernetes that automates the d
 1. *Install Argo CD*:
    Install Argo CD in your Kubernetes cluster:
    
-   helm install argo-cd argo/argo-cd --namespace argocd
+                helm install argo-cd argo/argo-cd --namespace argocd
    
 
 2. *Set Up GitOps*:
