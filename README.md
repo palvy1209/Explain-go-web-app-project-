@@ -9,7 +9,7 @@ Containerization is a core part of modern DevOps, as it allows developers to pac
 - *Clone the Repository*:  
   Git is a version control system, and cloning a repository allows you to retrieve the project's source code.
   
-  git clone <repository-url>
+                git clone <repository-url>
   
   This command clones the entire GitHub repository to your local machine, where you can inspect and modify the code.
 
