@@ -8,21 +8,21 @@ Containerization is a core part of modern DevOps, as it allows developers to pac
 
 - *Clone the Repository*:  
   Git is a version control system, and cloning a repository allows you to retrieve the project's source code.
-  bash
+  
   git clone <repository-url>
   
   This command clones the entire GitHub repository to your local machine, where you can inspect and modify the code.
 
 - *Build the Application*:  
   In Go (Golang), building an application converts the source code into a binary executable file. The binary is a machine-readable file that the operating system can run.
-  bash
+  
   go build -o main
   
   This command compiles the Go code into a main executable. The -o option specifies the output file name.
 
 - *Run the Application*:  
   After building the application, you run it to test if the binary works as expected.
-  bash
+
   ./main
   
   Running the binary (main) starts the web application locally, typically accessible via http://localhost:8080 or any port the app binds to.
@@ -41,6 +41,7 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
   Multi-stage builds help reduce the final image size and improve security. In a multi-stage Dockerfile, the first stage is used to build the application, and the second stage uses a minimal image (distroless) to only include the necessary components (the binary file).
 
 - *Stage 1: Build the Application*:
+- 
   dockerfile
   FROM golang:alpine as builder
   WORKDIR /app
@@ -53,6 +54,7 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
   - RUN go build -o main: Builds the application into a binary named main.
 
 - *Stage 2: Create the Final Image*:
+- 
   dockerfile
   FROM gcr.io/distroless/static
   WORKDIR /
@@ -76,7 +78,7 @@ Kubernetes defines the desired state of an application through YAML files. These
   A deployment defines how to run your application in the cluster, including the number of replicas (pods) and the image to use. It ensures the application is always available and scalable.
 
   Example:
-  yaml
+  
   apiVersion: apps/v1
   kind: Deployment
   metadata:
@@ -104,7 +106,7 @@ Kubernetes defines the desired state of an application through YAML files. These
 - *Service Manifest (service.yaml)*:  
   A service is used to expose your pods to other services or external traffic.
   Example:
-  yaml
+  
   apiVersion: v1
   kind: Service
   metadata:
@@ -125,7 +127,7 @@ Kubernetes defines the desired state of an application through YAML files. These
 - *Ingress Manifest (ingress.yaml)*:  
   Ingress resources allow external HTTP/S traffic to reach the services in the cluster.
   Example:
-  yaml
+  
   apiVersion: networking.k8s.io/v1
   kind: Ingress
   metadata:
@@ -154,7 +156,7 @@ Minikube is a local Kubernetes cluster used for development and testing.
 
 #### *Installing Minikube*:
 - *Linux*:
-  bash
+  
   curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   sudo install minikube-linux-amd64 /usr/local/bin/minikube
   
@@ -164,30 +166,30 @@ Minikube is a local Kubernetes cluster used for development and testing.
 
 #### *Starting Minikube*:
 To start a Minikube cluster, run the following command:
-bash
+
 minikube start
 
 This command initializes a local Kubernetes cluster inside a VM or a container.
 
 #### *Check Cluster Status*:
 After starting the cluster, you can check the status of the cluster and nodes:
-bash
+
 kubectl cluster-info
 
 
 #### *Setting Up Docker Environment to Minikube*:
 To build Docker images directly inside Minikube:
-bash
+
 eval $(minikube docker-env)
 
 
 #### *Building and Deploying in Minikube*:
 Once your Docker environment is set to Minikube, build your Docker image:
-bash
+
 docker build -t go-web-app:latest .
 
 Then, apply the Kubernetes manifests:
-bash
+
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 kubectl apply -f ingress.yaml
@@ -200,7 +202,7 @@ kubectl apply -f ingress.yaml
 Minikube includes an Ingress controller add-on, which allows external HTTP/S traffic to reach your services inside the cluster.
 
 #### *Enable Ingress in Minikube*:
-bash
+
 minikube addons enable ingress
 
 
@@ -208,20 +210,20 @@ This command enables the Ingress controller, which allows you to manage external
 
 #### *Verify Ingress Controller*:
 Check that the Ingress controller is running in the kube-system namespace:
-bash
+
 kubectl get pods -n kube-system
 
 
 #### *Accessing the Application*:
 1. *Get Minikube IP*:
    To find the IP address of your Minikube instance:
-   bash
+   
    minikube ip
    
 
 2. *Update /etc/hosts*:
    Add the Minikube IP and the domain defined in the Ingress file (go-web-app.local) to your /etc/hosts:
-   bash
+   
    sudo nano /etc/hosts
    192.168.99.100 go-web-app.local
    
@@ -237,7 +239,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 
 #### *Installing Helm*:
 - *Linux*:
-  bash
+  
   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
   
 
@@ -246,7 +248,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 
 #### *Creating a Helm Chart*:
 1. *Create a New Chart*:
-   bash
+   
    helm create go-web-app
    
 
@@ -256,7 +258,7 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
 
 3. *Install the Chart*:
    Install the chart on your Kubernetes cluster:
-   bash
+   
    helm install go-web-app ./go-web-app
    
 
@@ -269,7 +271,7 @@ GitHub Actions automates the process of building and testing code when changes a
 
 1. *Create Workflow File*:
    Create a .github/workflows/ci.yml file:
-   yaml
+   
    name: CI
    on:
      push:
@@ -294,7 +296,7 @@ Argo CD is a GitOps continuous delivery tool for Kubernetes that automates the d
 
 1. *Install Argo CD*:
    Install Argo CD in your Kubernetes cluster:
-   bash
+   
    helm install argo-cd argo/argo-cd --namespace argocd
    
 
