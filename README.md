@@ -118,7 +118,16 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
   - COPY --from=builder /app/main .: Copies the built binary from the previous stage (builder) into the final image.
   - CMD ["./main"]: Defines the command that will run when the container starts: in this case, running the main binary.
 
-
+- * Create Docker Image: *
+   
+        sudo docker build -t <imagename>:<tag>
+        docker images
+    
+  - *UPLOAD DOCKER IMAGE INTO DOCKER HUB*
+ 
+                 docker login -u ramdev284
+                 docker push ramdev284/dockerfile:tag
+ 
 ---
 
 ### *2. Kubernetes Manifest Creation*
@@ -269,6 +278,9 @@ Then, apply the Kubernetes manifests:
        kubectl apply -f deployment.yaml
        kubectl apply -f service.yaml
        kubectl apply -f ingress.yaml
+       kubectl get deployment
+       kubectl get srv
+       kubectl get ing
 
 
 ---
@@ -337,7 +349,22 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
    
              helm install go-web-app ./go-web-app
    
-
+├── helm/
+│   └── go-web-app-chart/
+│       ├── Chart.yaml
+│       ├── values.yaml
+│       ├── templates/
+│       │   ├── deployment.yaml
+│       │   ├── service.yaml
+│       │   └── ingress.yaml
+│       └── charts/
+├── Dockerfile
+├── go.mod
+├── go.sum
+└── .github/
+    └── workflows/
+        └── ci-cd.yml
+        
 ---
 
 ### *6. Continuous Integration and Delivery (CI/CD)*
