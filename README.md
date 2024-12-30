@@ -6,12 +6,43 @@ Containerization is a core part of modern DevOps, as it allows developers to pac
 
 #### *Step-by-Step Process*:
 
+- *GIT INSTALLATION*:
+
+         sudo apt intall
+         sudo apt install git
+
 - *Clone the Repository*:  
   Git is a version control system, and cloning a repository allows you to retrieve the project's source code.
   
                 git clone <repository-url>
   
   This command clones the entire GitHub repository to your local machine, where you can inspect and modify the code.
+
+  - * GO LANG INSTALLATION*:
+
+Begin by downloading the latest Go binary release using wget:
+
+                wget https://golang.org/dl/go1.21.2.linux-amd64.tar.gz
+
+Extract the downloaded Go binary release:
+
+                 tar -xf go1.21.2.linux-amd64.tar.gz
+
+Move the Go binary directory to /usr/local/go:
+
+                  sudo mv go /usr/local/go
+
+Add the Go bin directory to your PATH environment variable:
+
+                  sudo echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+
+Reload your .bashrc file to apply changes:
+
+                  source ~/.bashrc
+
+Verify that Go is installed successfully by running:
+
+                  go version
 
 - *Build the Application*:  
   In Go (Golang), building an application converts the source code into a binary executable file. The binary is a machine-readable file that the operating system can run.
@@ -29,6 +60,27 @@ Containerization is a core part of modern DevOps, as it allows developers to pac
 
 - *Access the Application*:  
   Once the application is running, open a browser and access it by typing http://localhost:<port>. If everything is set up correctly, the application should load.
+
+### *Docker Installation*:
+
+           sudo yum update -y
+    
+           sudo yum install -y docker
+    
+            sudo systemctl start docker
+    
+              sudo systemctl enable docker
+    
+               docker --version
+    
+             sudo usermod -aG docker ec2-user
+
+             sudo systemctl enable docker
+             sudo systemctl start docker
+             sudo systemctl status docker
+
+    
+
 
 #### *Creating a Dockerfile*:
 
@@ -65,6 +117,7 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
   - FROM gcr.io/distroless/static: Uses the distroless image, which is a minimal image with no unnecessary libraries, improving security and reducing the size.
   - COPY --from=builder /app/main .: Copies the built binary from the previous stage (builder) into the final image.
   - CMD ["./main"]: Defines the command that will run when the container starts: in this case, running the main binary.
+
 
 ---
 
@@ -160,8 +213,30 @@ Minikube is a local Kubernetes cluster used for development and testing.
   
          curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
          sudo install minikube-linux-amd64 /usr/local/bin/minikube
-  
 
+- *Provide execute permission*:
+
+         sudo chmod +x minikube-linux-amd64
+
+- *start a cluster using the Docker driver:*
+
+                     minikuber start --driver=docker
+
+                      newgrp docker
+                      minikube status
+
+  - *SETUP KUBECTL*
+    
+                    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                    ls
+                    chmod +x kubectl
+                    sudo mv kubectl /usr/local/bin/
+                    kubectl version --client
+                    kubectl config use-context minikube  # this command set to kubectl to intreact to minikube clusters
+                    kubectl config current-context
+                    kubectl get nodes
+
+  
 - *Windows*:
   You can install Minikube via *Chocolatey* or manually from the Minikube GitHub releases page.
 
