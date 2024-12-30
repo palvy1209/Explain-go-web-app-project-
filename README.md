@@ -16,14 +16,14 @@ Containerization is a core part of modern DevOps, as it allows developers to pac
 - *Build the Application*:  
   In Go (Golang), building an application converts the source code into a binary executable file. The binary is a machine-readable file that the operating system can run.
   
-  go build -o main
+              go build -o main
   
   This command compiles the Go code into a main executable. The -o option specifies the output file name.
 
 - *Run the Application*:  
   After building the application, you run it to test if the binary works as expected.
 
-  ./main
+              ./main
   
   Running the binary (main) starts the web application locally, typically accessible via http://localhost:8080 or any port the app binds to.
 
@@ -42,11 +42,11 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
 
 - *Stage 1: Build the Application*:
 - 
-  dockerfile
-  FROM golang:alpine as builder
-  WORKDIR /app
-  COPY . .
-  RUN go build -o main
+         dockerfile
+         FROM golang:alpine as builder
+         WORKDIR /app
+         COPY . .
+         RUN go build -o main
   
   - FROM golang:alpine as builder: This line sets the base image to golang:alpine, a minimal image with Go pre-installed.
   - WORKDIR /app: Sets the working directory for the subsequent instructions to /app.
@@ -56,10 +56,11 @@ A *Dockerfile* is a text file that contains all the instructions needed to build
 - *Stage 2: Create the Final Image*:
 - 
   dockerfile
-  FROM gcr.io/distroless/static
-  WORKDIR /
-  COPY --from=builder /app/main .
-  CMD ["./main"]
+  
+        FROM gcr.io/distroless/static
+        WORKDIR /
+        COPY --from=builder /app/main .
+        CMD ["./main"]
   
   - FROM gcr.io/distroless/static: Uses the distroless image, which is a minimal image with no unnecessary libraries, improving security and reducing the size.
   - COPY --from=builder /app/main .: Copies the built binary from the previous stage (builder) into the final image.
