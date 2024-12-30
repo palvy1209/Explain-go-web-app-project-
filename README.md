@@ -81,29 +81,17 @@ Kubernetes defines the desired state of an application through YAML files. These
   Example:
   > '''bash
   > apiVersion: apps/v1
-  
   > kind: Deployment
-  
   > metadata:
-  
   >  name: go-web-app
-  
   > spec:
-  
   >  replicas: 3  # Ensures high availability
-  
   >  selector:
-  
   >    matchLabels:
-  
   >      app: go-web-app
-  
   >  template:
-  
   >    metadata:
-  
   >      labels:
-  
   >       app: go-web-app
   >    spec:
   >      containers:
