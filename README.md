@@ -82,7 +82,7 @@ Kubernetes defines the desired state of an application through YAML files. These
   
 ###  kubernates deployment file for the Go Web App
 
->>
+
    apiVersion: apps/v1
    kind: Deployment
    metadata:
@@ -111,19 +111,19 @@ Kubernetes defines the desired state of an application through YAML files. These
   A service is used to expose your pods to other services or external traffic.
   Example:
   
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: go-web-app
-  spec:
-    selector:
-      app: go-web-app
-    ports:
-      - protocol: TCP
-        port: 80
-        targetPort: 80
-    type: ClusterIP
-  
+       apiVersion: v1
+       kind: Service
+       metadata:
+       name: go-web-app
+       spec:
+         selector:
+           app: go-web-app
+         ports:
+           - protocol: TCP
+             port: 80
+             targetPort: 80
+         type: ClusterIP
+   
   - *Selector*: Matches the pods with the specified label (app: go-web-app).
   - *Ports*: Exposes port 80 on the service and maps it to port 80 in the container.
   - *ClusterIP*: Exposes the service only within the Kubernetes cluster.
