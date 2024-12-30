@@ -79,8 +79,10 @@ Kubernetes defines the desired state of an application through YAML files. These
   A deployment defines how to run your application in the cluster, including the number of replicas (pods) and the image to use. It ensures the application is always available and scalable.
 
   Example:
+  
+###  kubernates deployment file for the Go Web App
 
-  '''yaml
+'''yaml
    apiVersion: apps/v1
    kind: Deployment
    metadata:
