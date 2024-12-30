@@ -80,7 +80,7 @@ Kubernetes defines the desired state of an application through YAML files. These
 
   Example:
 
-  '''bash
+  '''yaml
    apiVersion: apps/v1
    kind: Deployment
    metadata:
