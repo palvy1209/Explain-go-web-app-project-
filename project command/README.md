@@ -7,99 +7,99 @@
     7  kubectl get nodes
     8  kubectl config current-context
     9  kubectl get nodes
-   10  minikube status
-   11  kubectl version --client
-   12  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-   13  ls
-   14  chmod +x kubectl
-   15  sudo mv kubectl /usr/local/bin/
-   16  kubectl config use-context minikube
-   17  kubectl config current-context
-   18  minikube update-context
-   19  kubectl get nodes
-   20  history
-   21  ls
-   22  sudo yum install git -y
-   23  ls
-   24  git init
-   25  git clone https://github.com/palvy1209/go-web-app-MAIN.git
-   26  ls
-   27  cd go-web-app-MAIN
-   28  LS
-   29  ls
-   30  go build -o main
-   31  Sudo yum install golang -y
-   32  yum install golang -y
-   33  sudo yum update -y
-   34  yum install golang -y
-   35  sudo yum install golang -y
-   36  go --version
-   37  go version
-   38  ls
-   39  go run -o main
-   40  vi dockerfile
-   41  cat dockerfile
-   42  ls
-   43  mdkir manifest/go-web-app
-   44  sudo mdkir manifest/go-web-app
-   45  sudo mkdir manifest/go-web-app
-   46  sudo mdkir ./manifest/go-web-app
-   47  mkdir k8
-   48  ls 
-   49  cd k8
-   50  vi deployment.yaml
-   51  vi services.yaml
-   52  vi ingress.yaml
-   53  ls
-   54  cd ..
-   55  ls
-   56  dockerhub login
-   57  sudo dockerhub login
-   58  sudo docker login
-   59  docker push dockerfile
-   60  ls
-   61  docker push dockerfile/new
-   62  docker build -t dockerfile:1.0
-   63  sudo docker build -t dockerfile:1.0
-   64  sudo docker build -t dockerfile:tag .
-   65  docker images
-   66  docker push dockerfile:tag
-   67  docker tag 4c897b23b0fa ramdev284:tag
-   68  docker push ramdev284:tag
-   69  docker images
-   70  docker tag 4c897b23b0fa ramdev284/dockerfile:tag
-   71  docker images
-   72  docker push ramdev284/dockerfile
-   73  docker push ramdev284/dockerfile:tag
-   74  rm ~/ .docker/config.json
-   75  sudo rm ~/ .docker/config.json
-   76  sudo -f rm ~/ .docker/config.json
-   77  sudo rm ~/ .docker/config.json
-   78  docker images
-   79  docker rmi ramdev284:tag
-   80  docker rmi dockerfile:tag
-   81  ls
-   82  sudo docker images
-   83  docker login
-   84  docker login -u ramdev284
-   85  docker push ramdev284/dockerfile:tag
-   86  history
-   87  ls
-   88  cd k8
-   89  ls
-   90  kubectl create deployment deployment.yaml
-   91  kubectl create deployment.yaml
-   92  kubectl -f deployment.yaml
-   93  kubectl apply -f deployment.yaml
-   94  kubectl get deployments
-   95  kubectl get pods
-   96  kubectl apply -f service.yaml
-   97  ls
-   98  kubectl apply -f services.yaml
-   99  kubectl delete deployment deployment.yaml
-  100  kubectl delete deployment go-web-app
-  101  kubectl get deploymets
-  102  kubectl get deployments
+    10  minikube status
+    11  kubectl version --client
+    12  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    13  ls
+    14  chmod +x kubectl
+    15  sudo mv kubectl /usr/local/bin/
+    16  kubectl config use-context minikube
+    17  kubectl config current-context
+    18  minikube update-context
+    19  kubectl get nodes
+    20  history
+    21  ls
+    22  sudo yum install git -y
+    23  ls
+    24  git init
+    25  git clone https://github.com/palvy1209/go-web-app-MAIN.git
+    26  ls
+    27  cd go-web-app-MAIN
+    28  LS
+    29  ls
+    30  go build -o main
+    31  Sudo yum install golang -y
+    32  yum install golang -y
+    33  sudo yum update -y
+    34  yum install golang -y
+    35  sudo yum install golang -y
+    36  go --version
+    37  go version
+    38  ls
+    39  go run -o main
+    40  vi dockerfile
+    41  cat dockerfile
+    42  ls
+    43  mdkir manifest/go-web-app
+    44  sudo mdkir manifest/go-web-app
+    45  sudo mkdir manifest/go-web-app
+    46  sudo mdkir ./manifest/go-web-app
+    47  mkdir k8
+    48  ls 
+    49  cd k8
+    50  vi deployment.yaml
+    51  vi services.yaml
+    52  vi ingress.yaml
+    53  ls
+    54  cd ..
+    55  ls
+    56  dockerhub login
+    57  sudo dockerhub login
+    58  sudo docker login
+    59  docker push dockerfile
+    60  ls
+    61  docker push dockerfile/new
+    62  docker build -t dockerfile:1.0
+    63  sudo docker build -t dockerfile:1.0
+    64  sudo docker build -t dockerfile:tag .
+    65  docker images
+    66  docker push dockerfile:tag
+    67  docker tag 4c897b23b0fa ramdev284:tag
+    68  docker push ramdev284:tag
+    69  docker images
+    70  docker tag 4c897b23b0fa ramdev284/dockerfile:tag
+    71  docker images
+    72  docker push ramdev284/dockerfile
+    73  docker push ramdev284/dockerfile:tag
+    74  rm ~/ .docker/config.json
+    75  sudo rm ~/ .docker/config.json
+    76  sudo -f rm ~/ .docker/config.json
+    77  sudo rm ~/ .docker/config.json
+    78  docker images
+    79  docker rmi ramdev284:tag
+    80  docker rmi dockerfile:tag
+    81  ls
+    82  sudo docker images
+    83  docker login
+    84  docker login -u ramdev284
+    85  docker push ramdev284/dockerfile:tag
+    86  history
+    87  ls
+    88  cd k8
+    89  ls
+    90  kubectl create deployment deployment.yaml
+    91  kubectl create deployment.yaml
+    92  kubectl -f deployment.yaml
+    93  kubectl apply -f deployment.yaml
+    94  kubectl get deployments
+    95  kubectl get pods
+    96  kubectl apply -f service.yaml
+    97  ls
+    98  kubectl apply -f services.yaml
+    99  kubectl delete deployment deployment.yaml
+   100  kubectl delete deployment go-web-app
+   101  kubectl get deploymets
+   102  kubectl get deployments
   103  ls
   104  vi deployment.yaml
   105  kubectl apply -f deployment.yaml
