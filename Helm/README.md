@@ -16,18 +16,18 @@ Har environment ka configuration alag hai, jaise:
 #### 1. *Helm Install karo*  
 Pehle Helm ko install kar lo:  
 - *Linux/MacOS*:  
-  bash
+  
   curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
   
 
 - *Windows*:  
   Chocolatey se:
-  bash
+  
   choco install kubernetes-helm
   
 
 Install hone ke baad confirm karne ke liye:  
-bash
+
 helm version
 
 
@@ -35,12 +35,12 @@ helm version
 
 #### 2. *Kubernetes Cluster Setup Karo*  
 Helm Kubernetes ke saath kaam karta hai. Isliye ek cluster setup hona chahiye. Tumne abhi apne project me *Minikube* use kiya hai, to pehle usko start kar lo:  
-bash
+
 minikube start
 
 
 Kubeconfig file ensure karo:  
-bash
+
 kubectl config view
 
 
@@ -48,20 +48,20 @@ kubectl config view
 
 #### 3. *Helm Chart Create Karo*  
 Apne application ke liye ek Helm chart banao:  
-bash
+
 helm create my-app
 
 
 Isse ek folder *my-app* banega, jisme yeh structure hoga:  
 
-my-app/
-├── charts/
-├── templates/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── ingress.yaml
-├── values.yaml
-└── Chart.yaml
+        my-app/
+        ├── charts/
+        ├── templates/
+        │   ├── deployment.yaml
+        │   ├── service.yaml
+        │   ├── ingress.yaml
+        ├── values.yaml
+        └── Chart.yaml
 
 
 ---
@@ -69,7 +69,7 @@ my-app/
 #### 4. *Values File Customize Karo*  
 Yeh file environment-specific configurations store karti hai.  
 *Default values.yaml file*:  
-yaml
+
 replicaCount: 1
 image:
   repository: nginx
@@ -90,7 +90,7 @@ resources:
 Ab alag-alag environments ke liye files banao.  
 
 - *values-dev.yaml*:  
-  yaml
+  
   replicaCount: 1
   resources:
     limits:
@@ -102,7 +102,7 @@ Ab alag-alag environments ke liye files banao.
   
 
 - *values-qa.yaml*:  
-  yaml
+  
   replicaCount: 2
   resources:
     limits:
@@ -114,7 +114,7 @@ Ab alag-alag environments ke liye files banao.
   
 
 - *values-prod.yaml*:  
-  yaml
+  
   replicaCount: 5
   resources:
     limits:
@@ -129,7 +129,7 @@ Ab alag-alag environments ke liye files banao.
 
 #### 5. *Templates Update Karo*  
 templates/deployment.yaml ko customize karo placeholders ke saath:  
-yaml
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -156,22 +156,22 @@ spec:
 Environment-specific values.yaml ke saath chart ko deploy karo:
 
 - *Dev Environment*:  
-  bash
+  
   helm install my-app ./my-app -f values-dev.yaml
   
 
 - *QA Environment*:  
-  bash
+  
   helm install my-app ./my-app -f values-qa.yaml
   
 
 - *Prod Environment*:  
-  bash
+  
   helm install my-app ./my-app -f values-prod.yaml
   
 
 Deployment verify karne ke liye:  
-bash
+
 kubectl get pods
 kubectl get services
 
@@ -180,12 +180,12 @@ kubectl get services
 
 #### 7. *Update Aur Rollback*  
 Deployment ko update karne ke liye:  
-bash
+
 helm upgrade my-app ./my-app -f values-prod.yaml
 
 
 Agar issue aaye to rollback karne ke liye:  
-bash
+
 helm rollback my-app 1
 
 
