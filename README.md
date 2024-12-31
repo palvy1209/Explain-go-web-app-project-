@@ -350,21 +350,21 @@ Helm is a Kubernetes package manager that simplifies deploying applications. Hel
              helm install go-web-app ./go-web-app
 
    
-├── helm/
-│   └── go-web-app-chart/
-│       ├── Chart.yaml
-│       ├── values.yaml
-│       ├── templates/
-│       │   ├── deployment.yaml
-│       │   ├── service.yaml
-│       │   └── ingress.yaml
-│       └── charts/
-├── Dockerfile
-├── go.mod
-├── go.sum
-└── .github/
-    └── workflows/
-        └── ci-cd.yml
+          ├── helm/
+          │   └── go-web-app-chart/
+          │       ├── Chart.yaml
+          │       ├── values.yaml
+          │       ├── templates/
+          │       │   ├── deployment.yaml
+          │       │   ├── service.yaml
+          │       │   └── ingress.yaml
+          │       └── charts/
+          ├── Dockerfile
+          ├── go.mod
+          ├── go.sum
+          └── .github/
+              └── workflows/
+                 └── ci-cd.yml
         
 ---
 
@@ -503,17 +503,18 @@ Argo CD is a GitOps continuous delivery tool for Kubernetes that automates the d
 
 mermaid
 graph TD
-A[Clone Repository] --> B[Build Go Application]
-B --> C[Run Application Locally]
-C --> D[Create Dockerfile]
-D --> E[Build Docker Image in Minikube]
-E --> F[Create Kubernetes Manifests]
-F --> G[Deploy Application on Minikube]
-G --> H[Set Up Ingress Controller]
-H --> I[Create Helm Chart]
-I --> J[Setup CI/CD with GitHub Actions and Argo CD]
-J --> K[Automated Deployment and Testing]
-K --> L[Access Application via Browser]
+
+           A[Clone Repository] --> B[Build Go Application]
+           B --> C[Run Application Locally]
+           C --> D[Create Dockerfile]
+           D --> E[Build Docker Image in Minikube]
+           E --> F[Create Kubernetes Manifests]
+           F --> G[Deploy Application on Minikube]
+           G --> H[Set Up Ingress Controller]
+           H --> I[Create Helm Chart]
+           I --> J[Setup CI/CD with GitHub Actions and Argo CD]
+           J --> K[Automated Deployment and Testing]
+           K --> L[Access Application via Browser]
 
 
 ---
